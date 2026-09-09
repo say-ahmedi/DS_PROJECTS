@@ -1,16 +1,4 @@
-
-### Corrected version
-
-> Okay, Chat. Could you give me an idea for a pet project that covers this overall topic? I use Python to create and manage my projects. Moreover, please correct my text, rate it according to CEFR/IELTS level, and answer the question.
-
-**CEFR:** B1+
-**IELTS Writing equivalent:** 5.5–6.0
-
-Your meaning is clear, but the original has several spelling, punctuation, and sentence-structure issues. The vocabulary and ability to explain what you need are around B1+, approaching B2.
-
----
-
-## Pet project idea: **DevFlow — Python CLI Project & Issue Manager**
+### Pet project idea: **DevFlow — Python CLI Project & Issue Manager**
 
 For your `01_general_it` section, I think this is a particularly good project because you can cover **all five topics in one application** instead of making unrelated scripts.
 
