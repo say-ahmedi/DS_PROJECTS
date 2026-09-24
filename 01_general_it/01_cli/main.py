@@ -1,5 +1,5 @@
 from commands import Commands
-
+import time
 class DevFlow:
     introduction = """
     ====================================
@@ -29,10 +29,13 @@ exit                Close DevFlow'''
         is_running = True 
         while is_running:
             print(self.introduction)
-            user_input = ("devflow>")
+            user_input = input("devflow>")
             if user_input == 'help':
                 print(DevFlow.help_text)
-
-
+            elif user_input == 'exit':
+                is_running = False
+                print('Exiting DevFlow...')
+                time.sleep(2)
+                print('Goodbye!')
 devflow = DevFlow()
 devflow.start_app()
