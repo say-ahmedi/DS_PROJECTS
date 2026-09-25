@@ -1,8 +1,10 @@
+global n_p
+global n_pp
+
+n_p = 0
+n_pp = 0
 class Commands:
-    n_p = 0
-    n_pp = 0
     proj = {}
-    
     def __init__(self):
         pass
     
@@ -10,6 +12,8 @@ class Commands:
         name = input('Project Name: ')
         description = input('Description: ')
         status = input('Status [planned/active/completed]: ')
+        if status not in ['planned','active','completed']:
+            return f'No such status type as {status} exists.'
         n_p += 1
         n_pp += 1
         self.proj[n_pp] = {
@@ -17,10 +21,14 @@ class Commands:
             'description':description,
             'status':status
         }
-        print(f'✓ Project #{n_p} created successfully.') 
+        print(f'✓ Project #{n_p} created successfully.')     
         
     def list_project(self):
-        pass
+        if self.proj == False:
+            print('No Project Created Yet.')
+        else:
+            for item in self.proj:
+                print(item)
     def show_project(self):
         pass
     def update_project(self):
