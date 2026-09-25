@@ -28,7 +28,7 @@ class Commands:
         else:
             for item,value in self.proj.items():
                 print('ID   Name      Status')
-                print(f'{item}     {value['name']}      {value['status']}')
+                print(f"{item}     {value['name']}      {value['status']}")
     def show_project(self,proj_id):
         if len(self.proj) == 0:
                     print('No projects have been created yet.')
@@ -70,10 +70,13 @@ Current Project:
                 pass
             elif new_status not in ['active','planned','completed']:
                 print(f'No such status type as {new_status} exists.')
+                return
             else:
                 self.proj[proj_id]['status'] = new_status
 
             print(f'✓ Project #{proj_id} updated successfully.')
+        elif proj_id not in self.proj.keys():
+            print(f'No project found with ID {proj_id}.')
         else:
             print('No projects have been created yet.')
 

@@ -40,16 +40,18 @@ exit                Close DevFlow'''
                 print('Goodbye!')
             elif user_input == 'create':
                 command.create_project()
-            elif user_input.split()[0] == 'show' and user_input.split()[1].isdigit():
-                proj_id = int(user_input.split()[1])
-                command.show_project(proj_id)
-            elif user_input.split()[0] == 'update' and user_input.split()[1].isdigit():
-                proj_id = int(user_input.split()[1])
-                command.update_project(proj_id)
-            elif user_input.split()[0] == 'delete' and user_input.split()[1].isdigit():
-                proj_id = int(user_input.split()[1])
-                command.delete_project(proj_id)
-            
+            elif len(user_input.split())>1:
+                
+                if user_input.split()[0] == 'show' and user_input.split()[1].isdigit():
+                    proj_id = int(user_input.split()[1])
+                    command.show_project(proj_id)
+                elif user_input.split()[0] == 'update' and user_input.split()[1].isdigit():
+                    proj_id = int(user_input.split()[1])
+                    command.update_project(proj_id)
+                elif user_input.split()[0] == 'delete' and user_input.split()[1].isdigit():
+                    proj_id = int(user_input.split()[1])
+                    command.delete_project(proj_id)
+                
             elif user_input == 'list':
                 command.list_project()
             
