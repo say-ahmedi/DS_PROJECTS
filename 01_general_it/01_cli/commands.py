@@ -29,16 +29,64 @@ class Commands:
             for item,value in self.proj.items():
                 print('ID   Name      Status')
                 print(f'{item}     {value['name']}      {value['status']}')
-    def show_project(self):
-        pass
-    def update_project(self):
-        pass
+    def show_project(self,proj_id):
+        if len(self.proj) == 0:
+                    print('No projects have been created yet.')
+        else:
+            if proj_id in self.proj.keys():
+                print(f'''                                   
+│  Project {proj_id}                                        |
+│  Name: {self.proj[proj_id]['name']}                       │
+│  Description: {self.proj[proj_id]['description']}         │
+│  Status: {self.proj[proj_id]['status']}                   |''')
+            else:
+                print(f'No project found with the id {proj_id}.')
+                
+    def update_project(self,proj_id):
+        if len(self.proj) == 0:
+                    print('No projects have been created yet.')
+                
+        elif proj_id in self.proj.keys():
+            print(f'''
+Current Project:
+            
+            
+
+│  Name: {self.proj[proj_id]['name']}                       │
+│  Description: {self.proj[proj_id]['description']}         │
+│  Status: {self.proj[proj_id]['status']}                   |''')
+            new_name = input('New name [press Enter to keep current(applies to all the following commands)]: ')
+            new_description = input('New description [press Enter to keep current]:')
+            new_status = input('New status [planned/active/completed]:')
+            if new_name == '':
+                pass
+            else:
+                self.proj[proj_id]['name'] = new_name
+            if new_description == '':
+                pass
+            else:
+                self.proj[proj_id]['description'] = new_description
+            if new_status == '':
+                pass
+            elif new_status not in ['active','planned','completed']:
+                print(f'No such status type as {new_status} exists.')
+            else:
+                self.proj[proj_id]['status'] = new_status
+
+            print(f'✓ Project #{proj_id} updated successfully.')
+        else:
+            print('No projects have been created yet.')
+
+        
+        
     def delete_project(self,proj_id):
         if len(self.proj) == 0:
             print('No projects have been created yet.')
         else:
             if proj_id in self.proj.keys():
                 del self.proj[proj_id]
+                print(f'Project #{proj_id} deleted')
             else:
                 print(f'No project found with the id {proj_id}.')
+                
     
