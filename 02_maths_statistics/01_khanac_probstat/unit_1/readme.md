@@ -1,4 +1,3 @@
-
 # Unit 1: Analyzing Categorical Data - Foundations of EDA
 
 ## 📖 What this unit consists of
@@ -53,6 +52,7 @@ I created this set of exercises to **bridge the gap between math theory and Pyth
   * *Instructions:* Using the Antifraud table from Task 2, create a **Stacked Bar Chart** using `pandas.DataFrame.plot(kind='bar', stacked=True)`. The X-axis is Location, the bars are stacked with Fraud vs No Fraud proportions.
   * *Acceptance Criteria:* A stacked bar chart renders. You must normalize the data so the bars represent 100% proportions, allowing you to visually compare the fraud rate between Local and International.
 
+
 ---
 
 ### File 3: `03_marginal_conditional_and_independence.ipynb`
@@ -62,15 +62,15 @@ I created this set of exercises to **bridge the gap between math theory and Pyth
 * **Task 1: Universal (The Basics)**
   * *Instructions:* Using your Pet_Owner dataset, calculate the marginal distribution for `Pet_Owner`. Write a function `probability_pet_given_gender(gender)` to calculate the conditional probability.
   * *Acceptance Criteria:* Marginal percentages sum to 100%. The function correctly filters data and returns a percentage.
-* **Task 2: Capstone (The Antifraud Logic)**
+* **Task 2: Capstone (Antifraud Logic)**
   * *Instructions:* Using your Credit Card dataset, calculate the marginal distribution for `Is_Fraud` (base rate). Write a function `probability_fraud_given_location(location)`.
   * *Acceptance Criteria:* `probability_fraud_given_location('International')` returns a percentage significantly higher than the base rate.
 * **Task 3: Hidden Concept (Testing for Independence)**
   * *Instructions:* Two variables are **independent** if P(A|B) = P(A). Write a Python function `check_independence(dataset, var1, var2)` that calculates the marginal probability of var1, and the conditional probability of var1 given var2. Print whether they are "Independent" or "Associated".
   * *Acceptance Criteria:* When you run `check_independence` on Gender vs Pet_Owner (if you made the probabilities identical), it prints "Independent". When you run it on Location vs Fraud, it prints "Associated".
-
----
-
-## 📝 Capstone Connection
+* **Task 4: Capstone (Product Analytics - Feature Adoption)**
+  * *Context:* Before building a Machine Learning model to predict user churn, a Product Analyst needs to verify if a user's subscription tier affects their likelihood of adopting a new UI feature.
+  * *Instructions:* Generate a synthetic dataset of 1,000 users. Assign `Subscription_Tier` (20% 'Premium', 80% 'Free'). Assign `Adopted_New_Feature` ('Yes' or 'No'), but bias the data so 'Premium' users are 3x more likely to adopt the feature than 'Free' users. Build a two-way table. Use your `check_independence` function to evaluate if `Subscription_Tier` and `Adopted_New_Feature` are associated.
+  * *Acceptance Criteria:* The script generates the biased dataset, builds the frequency table, and correctly prints "Associated" (because the conditional probability of adopting the feature given Premium status will be significantly higher than the marginal probability of adopting the feature overall). This proves to the ML team that `Subscription_Tier` is a valid categorical feature to include in their churn prediction model.
 
 By completing File 3, Task 3, you are doing exactly what Machine Learning models do under the hood! Before building a complex neural network, a Data Scientist checks for independence. If `P(Fraud | International) == P(Fraud)`, then location gives you zero new information, and the AI model won't use it. By proving they are *associated*, you have mathematically justified why your Capstone model should use "Transaction Location" as a feature to predict fraud.
