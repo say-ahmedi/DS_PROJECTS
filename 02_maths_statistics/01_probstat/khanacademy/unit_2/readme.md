@@ -1,4 +1,3 @@
-
 # 📊 Unit 2 Applied: Displaying & Comparing Quantitative Data in Python for ML
 
 Here is the analytical curriculum designed to bridge your Khan Academy statistical theory with Machine Learning workflows. As requested, no Python code is provided—you are the coder here!
@@ -62,6 +61,102 @@ Here is the analytical curriculum designed to bridge your Khan Academy statistic
 ---
 
 ### 🧪 Task 4: Clusters, Gaps, Peaks & Outliers — The 4-Feature Diagnosis
+
+### Task 1: Stem-and-leaf plots
+
+**Learning Objectives:**
+Construct and interpret a stem-and-leaf plot to understand the shape, center, and spread of a quantitative dataset while retaining original data values.
+
+**ML Connection:**
+Before feeding data into a model, it is crucial to understand its raw distribution. Stem-and-leaf plots act as a low-level feature inspection tool, allowing you to quickly spot data entry errors, discrete intervals, or high-frequency ranges that might require binning (discretization) before training.
+
+**Analytical Step-by-Step Instructions:**
+
+1. Load the Titanic dataset using Pandas and extract the "Age" column. Drop all missing values to isolate a clean quantitative variable.
+2. Determine the "stem" by taking the integer part of each age (the tens digit). Determine the "leaf" by taking the fractional or remainder part (the ones digit).
+3. Group the data by the stem, sort the leaves in ascending order for each group, and print this structured output to the console.
+4. Using Matplotlib or Seaborn, create a histogram of the same "Age" data using bins that match the stem groups (e.g., bin widths of 10).
+5. Visually compare your printed stem-and-leaf output with the histogram to verify they represent the same distribution shape.
+
+**Medieval Fantasy Analogy (Purpose of Each Step):**
+You are the Kingdom’s Scribe, tasked with quickly cataloging the ages of the King’s army. The "stems" are the broad military regiments grouped by decade (the 20s, the 30s, etc.). The "leaves" are the exact ages of the individual soldiers within those regiments, lined up in order. By organizing the army this way, you can instantly see which regiment is the largest (the mode) and spot the lonely 65-year-old veteran standing at the back, without losing track of any individual soldier's exact age.
+
+**Key Takeaway:**
+A stem-and-leaf plot is a hybrid data structure that retains raw data values while simultaneously acting as a histogram, making it perfect for quick, small-to-medium dataset visual exploration.
+
+---
+
+### Task 2: Outliers, gaps, and peaks
+
+**Learning Objectives:**
+Identify outliers, gaps, and multiple peaks (bimodality/multimodality) in quantitative data using descriptive statistics and visualization.
+
+**ML Connection:**
+Outliers can catastrophically skew the weights of distance-based ML models (like KNN) or linear regression. Gaps and peaks often indicate distinct subpopulations within your data, which may require separate modeling, stratification, or feature engineering to help the model learn distinct patterns rather than forcing a single trend.
+
+**Analytical Step-by-Step Instructions:**
+
+1. Load the Iris dataset using Seaborn. Select the "sepal_length" column as your quantitative variable.
+2. Use Pandas to calculate the 25th percentile (Q1), 75th percentile (Q3), and the Interquartile Range (IQR). Calculate the mathematical lower and upper bounds for outliers (Q1 - 1.5*IQR and Q3 + 1.5*IQR).
+3. Filter the dataset to identify any rows where "sepal_length" falls outside these bounds.
+4. Plot a boxplot of "sepal_length" to visually verify the IQR bounds and any outlier points.
+5. Plot a KDE (Kernel Density Estimate) plot or a histogram with fine bin sizes on the same variable. Visually identify any gaps (empty spaces between bars) and peaks (local maximums in the density curve).
+
+**Medieval Fantasy Analogy (Purpose of Each Step):**
+You are a Royal Scout surveying a mountain range. Peaks represent heavily fortified castles where troops are densely concentrated. Gaps are treacherous, uninhabited valleys where no troops dare camp. Outliers are lone watchtowers built far away from the main kingdom. Calculating the IQR is your mathematical map to officially define the kingdom's borders; anything outside those borders is an anomaly that must be investigated—either a dangerous threat or a faulty rumor.
+
+**Key Takeaway:**
+Visualizing distributions isn't just about finding the average; it's about identifying the structural anomalies (outliers/gaps) and subpopulations (peaks) that dictate how the data behaves in different contexts.
+
+---
+
+### Task 3: Comparing distributions and misleading graphs
+
+**Learning Objectives:**
+Compare quantitative distributions across categorical groups and recognize how visual manipulation (axes scaling, bin sizes) can mislead interpretation.
+
+**ML Connection:**
+When evaluating ML model performance or comparing feature distributions across target classes, misleading scales can trick you into thinking a model has high predictive power when class overlap is actually high. Proper comparison ensures you select features that genuinely separate classes.
+
+**Analytical Step-by-Step Instructions:**
+
+1. Load the Titanic dataset using Pandas. Separate the "Fare" column into two groups based on the "Survived" categorical column (0 = No, 1 = Yes).
+2. Calculate the mean, median, and standard deviation for both groups to numerically compare their centers and spreads.
+3. Create a misleading bar chart comparing the mean fares of the two groups, but set the Y-axis to start at a high value (e.g., 20) to exaggerate the difference between the groups.
+4. Create an accurate visualization using a grouped boxplot or overlapping KDE plots, ensuring the Y-axis starts at 0 and the x-axis clearly labels "Did Not Survive" and "Survived".
+5. Compare the two visualizations. Note how the truncated bar chart makes the fare difference look massive, while the boxplot reveals a massive overlap in the distributions.
+
+**Medieval Fantasy Analogy (Purpose of Each Step):**
+You are the King’s Treasurer comparing the wealth of two rival kingdoms. A sneaky bard (the misleading graph) uses a broken scale starting at 9,000 gold coins to claim Kingdom A is vastly richer than Kingdom B. The Royal Cartographer (the boxplot) uses a true scale starting at 0 gold coins, revealing that while Kingdom A is slightly richer, both kingdoms are actually quite similar in wealth, with many poor and rich citizens overlapping in both realms.
+
+**Key Takeaway:**
+Always use zero-baselined axes and distribution-showing plots (like boxplots) when comparing groups. Truncated axes exaggerate differences, which can lead to false conclusions about feature importance.
+
+---
+
+### Task 4: Capstone: Wine Quality EDA and Modeling
+
+**Learning Objectives:**
+Synthesize EDA techniques (distribution comparison, outlier detection) to prepare data for a baseline Machine Learning classification model.
+
+**ML Connection:**
+This is the bridge between Unit 2's descriptive statistics and predictive modeling. EDA dictates how you clean the data, handle outliers, and select features, directly impacting the performance of your Scikit-learn model.
+
+**Analytical Step-by-Step Instructions:**
+
+1. Load the Wine Quality dataset (Red or White) using Pandas.
+2. Create a binary target variable for classification: label wines with a quality score of 7 or higher as "High Quality" (1), and all others as "Standard" (0).
+3. Perform EDA: Use Seaborn to plot a boxplot comparing the "alcohol" content across your two new target classes. Use the IQR method to identify and cap (or remove) extreme outliers in the "alcohol" column.
+4. Split the data into training and testing sets using Scikit-learn.
+5. Train a basic Logistic Regression model on the training set.
+6. Calculate the accuracy of the model on the testing set.
+7. Reflect on the EDA: Did the boxplot show a clear separation of "alcohol" between the classes? Did this translate to a high accuracy, or did the overlap in the boxplot result in lower model performance?
+
+**Medieval Fantasy Analogy (Purpose of Each Step):**
+You are the Grand Alchemist evaluating the kingdom’s wine reserves for the upcoming Royal Wedding. First, you analyze the magical potency (alcohol content) of "Blessed" wines (High Quality) vs "Common" wines (Standard) using an ancient scrying mirror (the boxplot). You discard the spoiled, anomalous barrels (outlier removal). Then, you recruit a Guild of Apprentice Tasters (Logistic Regression) to learn from your analysis and predict which future barrels will become Blessed. The accuracy score tells you if the Apprentices learned well, or if the magical potency was too similar between the two wine types to make a reliable prediction.
+
+**Key Takeaway:**
+EDA is not just an academic exercise; it is the necessary intelligence-gathering phase that dictates how you clean, select, and feed data into an ML model, revealing the predictive power of your features before a single line of modeling code is writte
 
 **Title & Scenario:** You are preparing data for a K-Means clustering model. K-Means is highly sensitive to outliers because it uses mean calculations. You need to visually and statistically identify anomalies and gaps in your data before feeding it to the model.
 **Learning Objectives:** Visually detecting clusters (multimodality), gaps, peaks, and outliers. Using box plots and implementing IQR (Interquartile Range) outlier detection.
