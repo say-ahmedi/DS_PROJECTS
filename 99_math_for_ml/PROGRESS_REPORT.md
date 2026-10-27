@@ -1,0 +1,46 @@
+# Math for ML: pre-rebuild structure and linear algebra assessment
+
+**Historical snapshot:** This report describes the notebook state before the assignment rebuild later on 27 October 2026. The current assignments are inside the `.ipynb` files; the separate Notebook 02 Markdown assignment sheet has been removed. Use the [math README](readme.md) for the current sequence.
+
+Assessment date: 27 October 2026. Scope: current local files in this repository. “Complete” below means verified work, not merely a filename or saved notebook output. I inspected notebook JSON and relevant code; I did not claim a full fresh-kernel run of the notebooks.
+
+## 1. Project structure assessment against the roadmap
+
+The repository's numbered folders broadly mirror the skills in the root [roadmap](../roadmap.md): general IT, mathematics/statistics, databases and SQL, data warehouse/ETL, cloud, Python data analysis, ML, deep learning, NLP, computer vision, time series, and MLOps. The additional `99_math_for_ml` area is a sensible cross-cutting support track for the math needed by ML. Its internal `01_needed_first`, `02_needed_later`, and `03_applied_ml_bridges` split agrees with the source images retained in the [math README](readme.md).
+
+The structure currently expresses **intent more than delivery**. Nine of the twelve numbered curriculum areas (`03`, `04`, `05`, and `07`–`12`) have no files. Within `99_math_for_ml`, 15 notebook files exist, but only the first two linear algebra notebooks contain code cells; the remaining 13 are topic scaffolds. Most adjacent topic READMEs say only “Notes, exercises, and implementations for this topic.” The root roadmap is an imported certificate/skills table with broken Markdown, spreadsheet error remnants, and no reliable per-topic completion state. The root [README](../README.md) is a richer portfolio plan but mixes an eight-project shortlist with a twelve-section list. Its suggestions should be treated as options, not evidence that each project exists.
+
+The math track overlaps with `02_maths_statistics`, which already holds probability/statistics and a long Khan Academy linear algebra notebook sequence. This overlap can be useful if the roles are explicit: use `02_maths_statistics` for course notes and broad exploration, and `99_math_for_ml` for short implementation labs tied to ML. Without that distinction, repeated notebooks can consume time without closing a skill gap. No additional major project is justified by the current evidence; finishing and verifying existing labs has higher value.
+
+## 2. Linear algebra progress report
+
+| File | Observed state | What remains |
+| --- | --- | --- |
+| [README](01_needed_first/01_linear_algebra/README.md) | Clear purpose, ordered notebook table, fresh-kernel criteria, and a boundary that transaction similarity is not fraud detection. During this review, broken references to a nonexistent `ACCEPTANCE_CRITERIA.md` and capstone notebook were removed, and the new assignment sheet was linked. | Keep its completion criteria aligned with the actual notebooks as they change. |
+| [Notebook 01](01_needed_first/01_linear_algebra/01_vectors_matrices_shapes.ipynb) | 55 cells, 42 code cells. It practices vector arithmetic, feature-matrix shape, indexing, reshaping, axes, validation, and one-row model input. | It has saved uncaught assertion errors in Task 4 and a deliberate invalid call in Task 9. Task 10 ends with an admission that the requested explanation was not understood. Several code cells are unexecuted. Catch expected failures, replace self-referential shape checks with explicit expected values, and complete the final interpretation before marking it verified. |
+| [Notebook 02](01_needed_first/01_linear_algebra/02_operations_matmul_transpose_dot_product.ipynb) | 54 cells, 41 code cells. Tasks 1–10 cover elementwise operations, dot product, transpose, matrix dimensions, loop-based multiplication, transaction scores, debugging, and a reusable scorer. It is the latest **worked** notebook. | The loop function overwrites rather than accumulates its inner sum; its first call uses `A2` and `B2` before those variables are defined in notebook order. Only the second valid matrix case is partially checked, and a displayed `np.allclose` result is not an assertion. The attempt to pass 1D `weights` to a 2D-only function is saved as an error. Task 10 is `pass`, and the final checklist is unchecked. |
+| [Notebook 03](01_needed_first/01_linear_algebra/03_norms_broadcasting_distances.ipynb) | One Markdown cell: title only. | Planned, not started. Its README promises L1/L2 norms, cosine similarity, pairwise distance, zero-vector behavior, and scaling effects. Begin only after Notebook 02 is sound. |
+
+**Verified numerical issue in Notebook 02:** Extracting the notebook's `matmul_loops` function and running it on fixed matrices `[[1,2,3],[4,5,6]] @ [[7,8],[9,10],[11,12]]` produced `[[33,36],[66,72]]`; NumPy produced `[[58,64],[139,154]]`. The inner loop assigns `total = A[i,k] * B[k,j]` instead of accumulating. This is a concrete computation defect, not merely a missing explanation. I did not alter the user's notebook while assessing it.
+
+**Assignment design precedent:** Notebook 01 uses numbered tasks with required work and acceptance checkboxes. The previous Notebook 02 refined that into **Goal → Required work → Acceptance criteria → Deliverable**, plus explicit shape assertions, invalid-input tests, explanatory text, an ML context, and an overall completion checklist. The rebuilt notebooks follow that pattern. All exercises and checks now live inside their corresponding notebooks.
+
+## 3. Main README requirements analysis
+
+The old `99_math_for_ml/readme.md` mixed four reference images, Khan Academy course suggestions, advanced textbook/video recommendations, and a six-week path focused on decompositions. The source images divide math into early and later topics. They identify early linear algebra (vectors, matrices, dimensions, operations, multiplication, transpose, dot product, L1/L2 norms); calculus (derivatives, partial derivatives, gradient, chain rule, extrema, intuitive convexity); probability (conditional probability, Bayes, independence, random variables, expectation, variance, covariance/correlation, distributions); and applied statistics (summary measures, outliers, confidence intervals, basic tests, p-values). Those are the core prerequisites for the intended hands-on ML work.
+
+The same source material places SVD, spectral decomposition, eigenvector-based PCA, QR, pseudoinverse, condition number, Hessian, Jacobian, Taylor expansion, advanced convex optimization, Lagrange multipliers, MLE/MAP, entropy/KL/cross-entropy, CLT/LLN, and Bayesian inference later. These should be revisited when PCA, deep learning, model fitting, or experiments create a concrete need. Eigenvector intuition is recommended at the PCA stage; a full decomposition derivation is not required before starting tabular ML. The rewritten [math README](readme.md) now makes these priorities explicit and links to the existing directories.
+
+The existing `01_needed_first/05_classical_ml_math` and `06_fraud_metrics` folders are practical model bridges. Their placement under “needed first” should not be read as a requirement to master all model-specific math before running a basic model. Study loss and classification metrics alongside the corresponding model.
+
+## 4. Prioritized actions
+
+1. **Finish Notebook 02 before proceeding.** Correct the accumulation bug, move test data before its use, assert two numerically correct products, catch expected errors, implement `linear_scores`, and run from a fresh kernel. Use the attached assignments as the completion plan.
+2. **Close Notebook 01's remaining gaps.** Convert intended failing examples into caught tests, finish Task 10's explanation, and verify fresh-kernel execution. Saved outputs and partial assertions are insufficient.
+3. **Keep the linear algebra checklist current.** The missing references have been removed during this review. Defer the proposed transaction-similarity capstone until the first three notebooks are verified; it is optional and must not be presented as fraud detection.
+4. **Then implement Notebook 03.** Prioritize L1/L2 norms, cosine similarity with explicit zero-vector behavior, broadcasting and pairwise distances, and a small scaling comparison. These directly support preprocessing, clustering, and nearest-neighbor work.
+5. **Clarify progress across the repository.** Add a small status/evidence table to the root roadmap or link it to a tracker; distinguish planned, in progress, and verified. Link the two math tracks and explain their different roles. Avoid adding new portfolio projects until the current labs supply reliable, tested evidence of skill.
+
+## Verification limits
+
+Counts and findings come from current files, notebook cells, saved metadata, the root roadmap/README, and one focused execution of the extracted matrix multiplication function. A full Notebook 01/02 fresh-kernel run and review of every course notebook remain necessary before either can be called fully complete. The assessment did not change the existing notebooks or the user's working-tree edits; only the math READMEs and new report/assignment documents were edited.
