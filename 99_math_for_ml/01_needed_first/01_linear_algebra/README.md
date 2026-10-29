@@ -10,10 +10,10 @@ Learn enough linear algebra to reason about tabular ML data, model inputs, dista
 | ---------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `01_vectors_matrices_shapes.ipynb`                 | Vectors, matrices, dimensions, axes, reshaping and shape contracts       | Complete all shape exercises, pass the exact assertions in the notebook, and explain what each axis represents.                                            |
 | `02_operations_matmul_transpose_dot_product.ipynb` | Elementwise operations, dot product, transpose and matrix multiplication | Implement loop-based matrix multiplication; match NumPy on two valid cases; reject invalid inputs; compute a linear score per observation.                 |
-| `03_norms_broadcasting_distances.ipynb`            | L1/L2 norms, cosine similarity, broadcasting and pairwise distance       | Implement and test norms, cosine similarity (including zero-vector behavior), and pairwise Euclidean distances; demonstrate the effect of feature scaling. |
-| `04_capstone_content_recommendations.ipynb`        | Content-based recommendation with synthetic movie features               | Build a taste profile, score and rank unseen items, evaluate precision/recall at k, and discuss scale and cold-start limits.                              |
+| `03_norms_broadcasting_distances.ipynb`            | L1/L2 norms, cosine similarity, feature-wise broadcasting and distance    | Implement norms, cosine, standardization, pairwise distances, and a small nearest-neighbor comparison with numerical and edge-case checks.                 |
+| `04_capstone_content_recommendations.ipynb`        | Content-based recommendation with synthetic movie features               | Build a taste profile, score and rank unseen items, evaluate precision/recall at k, and test feature-weight and cold-start limits.                         |
 
-Notebook 1 contains earlier learner work and needs a fresh-kernel review. Notebook 2 has been rebuilt as an assignment notebook; Notebook 3 and the capstone contain new assignment scaffolds. These are **not completed solutions**. All assignments and checks live in their corresponding `.ipynb` files.
+Notebook 1 contains earlier learner work and needs a fresh-kernel review. Notebooks 2–4 are assignment notebooks, **not completed solutions**. Notebook 3 and the recommendation capstone each have four focused tasks. All explanations, starter data, and checks live in their corresponding `.ipynb` files.
 
 ## Exact completion criteria
 
@@ -32,8 +32,8 @@ A notebook with the correct headings but unfinished code is **not complete**. A 
 
 - Notebook 1: 60–90 minutes.
 - Notebook 2: 90–120 minutes.
-- Notebook 3: 90–120 minutes.
-- Capstone: 2–3 hours, after the first three notebooks.
+- Notebook 3: 75–105 minutes.
+- Capstone: 90–120 minutes, after the first three notebooks.
 
 These are planning estimates, not deadlines. If an acceptance test fails, fix the cause and record what you learned rather than moving on just to keep a calendar.
 
