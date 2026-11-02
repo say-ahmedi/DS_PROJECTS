@@ -65,3 +65,17 @@ The capstones use different synthetic datasets and can be completed independentl
 ## Original reference images
 
 The source images distinguish topics needed early from those needed later: [linear algebra](image/readme/1793117432317.png), [calculus](image/readme/1793117482978.png), [probability](image/readme/1793117496023.png), and [statistics](image/readme/1793117541318.png).
+
+
+Linear Algebra
+
+![1793640217875](image/readme/1793640217875.png)
+
+
+Calculus
+
+![1793640232550](image/readme/1793640232550.png)
+
+Prob&Statistics.
+
+![1793640246373](image/readme/1793640246373.png)
