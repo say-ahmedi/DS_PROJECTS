@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppe-detector-portfolio"
+version = "0.1.0"
+description = "Reproducible Construction-PPE object detection project"
+requires-python = ">=3.11,<3.15"
+dependencies = ["Pillow>=10", "numpy>=1.26"]
+
+[project.optional-dependencies]
+train = ["ultralytics", "torch"]
+serve = ["fastapi", "uvicorn", "python-multipart"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

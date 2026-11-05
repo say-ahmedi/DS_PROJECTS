@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: ppe-detector-portfolio
+Version: 0.1.0
+Summary: Reproducible Construction-PPE object detection project
+Requires-Python: <3.15,>=3.11
+Requires-Dist: Pillow>=10
+Requires-Dist: numpy>=1.26
+Provides-Extra: train
+Requires-Dist: ultralytics; extra == "train"
+Requires-Dist: torch; extra == "train"
+Provides-Extra: serve
+Requires-Dist: fastapi; extra == "serve"
+Requires-Dist: uvicorn; extra == "serve"
+Requires-Dist: python-multipart; extra == "serve"

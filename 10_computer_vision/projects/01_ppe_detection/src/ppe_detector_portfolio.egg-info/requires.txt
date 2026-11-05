@@ -1,0 +1,11 @@
+Pillow>=10
+numpy>=1.26
+
+[serve]
+fastapi
+uvicorn
+python-multipart
+
+[train]
+ultralytics
+torch
