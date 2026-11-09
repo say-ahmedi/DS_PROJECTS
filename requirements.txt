@@ -1,0 +1,41 @@
+
+# ==========================
+# DATA MANIPULATION & EDA
+# ==========================
+numpy
+pandas
+matplotlib
+seaborn
+scipy
+
+# ==========================
+# MACHINE LEARNING
+# ==========================
+scikit-learn
+
+# ==========================
+# NLP FUNDAMENTALS
+# ==========================
+nltk
+spacy
+
+# ==========================
+# DATASET HANDLING
+# ==========================
+pyarrow
+tqdm
+
+# ==========================
+# JUPYTER NOTEBOOKS
+# ==========================
+jupyterlab
+ipykernel
+
+# ==========================
+# ADVANCED NLP (INSTALL LATER)
+# ==========================
+# datasets
+# transformers
+# torch
+# sentence-transformers
+# tokenizers
